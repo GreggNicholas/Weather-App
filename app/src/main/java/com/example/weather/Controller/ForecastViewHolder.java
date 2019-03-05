@@ -9,17 +9,20 @@ import com.example.weather.Model.WeatherModel;
 import com.example.weather.R;
 
 public class ForecastViewHolder extends RecyclerView.ViewHolder {
-    private ForecastAdapter adapter;
     private TextView maxTemp;
     private TextView minTemp;
     private TextView dateAndTime;
 
-    public ForecastViewHolder(@NonNull View itemView) {
+    public ForecastViewHolder(@NonNull View itemView, TextView maxTemp, TextView minTemp, TextView dateAndTime) {
         super(itemView);
+        this.maxTemp = maxTemp;
+        this.minTemp = minTemp;
+        this.dateAndTime = dateAndTime;
     }
 
-
     public void onBind(final WeatherModel weatherModel) {
-       dateAndTime = itemView.findViewById(R.id.weather_view);
+        dateAndTime = itemView.findViewById(R.id.weather_view);
+        maxTemp = itemView.findViewById(R.id.display_maxTemp_fragment);
+        minTemp = itemView.findViewById(R.id.display_minTemp_fragment);
     }
 }

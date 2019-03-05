@@ -2,22 +2,22 @@ package com.example.weather.Model;
 
 public class WeatherModel {
 
-    private String maxTempF;
-    private String minTempF;
+    private int maxTempF;
+    private int minTempF;
     private String dateTimeISO;
 
-    public WeatherModel(String maxTempF, String minTempF, String dateTimeISO) {
+    public WeatherModel(int maxTempF, int minTempF, String dateTimeISO) {
         this.maxTempF = maxTempF;
         this.minTempF = minTempF;
         this.dateTimeISO = dateTimeISO;
     }
 
 
-    public String getMaxTempF() {
+    public int getMaxTempF() {
         return maxTempF;
     }
 
-    public String getMinTempF() {
+    public int getMinTempF() {
         return minTempF;
     }
 

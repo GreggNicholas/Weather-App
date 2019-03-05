@@ -9,9 +9,19 @@
     tools:context=".Fragment.DisplayForecastFragment">
 
     <TextView
-        android:id="@+id/display_forecast_fragment"
+        android:id="@+id/display_dateandTime_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
          />
+    <TextView
+        android:id="@+id/display_maxTemp_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+    <TextView
+        android:id="@+id/display_minTemp_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
 
 </FrameLayout>
