@@ -12,26 +12,26 @@ import com.example.weather.R;
 import java.util.List;
 
 public class ForecastAdapter extends RecyclerView.Adapter<ForecastViewHolder> {
-private final  List<WeatherModel> getWeatherList;
+private List<WeatherModel> getTempList;
 
-    public ForecastAdapter(List<WeatherModel> getWeatherList) {
-        this.getWeatherList = getWeatherList;
+    public ForecastAdapter(List<WeatherModel> getTempList) {
+        this.getTempList = getTempList;
     }
 
     @NonNull
     @Override
     public ForecastViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int position) {
-       View childView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.forecast_item_view, viewGroup,false);
+       final View childView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.forecast_item_view, viewGroup,false);
        return new ForecastViewHolder(childView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ForecastViewHolder forecastViewHolder, int position) {
-forecastViewHolder.onBind(getWeatherList.get(position));
+forecastViewHolder.onBind(getTempList.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return getWeatherList.size();
+        return getTempList.size();
     }
 }

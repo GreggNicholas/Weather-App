@@ -13,7 +13,7 @@ public class ForecastViewHolder extends RecyclerView.ViewHolder {
     private TextView minTemp;
     private TextView dateAndTime;
 
-    public ForecastViewHolder(@NonNull View itemView, TextView maxTemp, TextView minTemp, TextView dateAndTime) {
+    public ForecastViewHolder(@NonNull View itemView) {
         super(itemView);
         this.maxTemp = maxTemp;
         this.minTemp = minTemp;

@@ -16,6 +16,7 @@ import com.example.weather.Model.WeatherModel;
 import com.example.weather.Service.RetroFitSingleton;
 import com.example.weather.Service.WeatherService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -25,6 +26,7 @@ import retrofit2.Retrofit;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
+    public List<WeatherModel> weatherList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,14 +36,15 @@ public class MainActivity extends AppCompatActivity {
         final RecyclerView recyclerView = findViewById(R.id.forecast_recyclerview);
         final Retrofit retrofit = RetroFitSingleton.newInstance();
         WeatherService service = retrofit.create(WeatherService.class);
-        Call<WeatherListResponse> weatherListResponseCall = service.getWeatherUpdates("dYNLXJfHo7ygPXu8cOhAA", "u42nGUhdZLwh1KQALowBVj5n34qFzRW1hY6DQ8jr");
+        final Call<WeatherListResponse> weatherListResponseCall = service.getWeatherUpdates("dYNLXJfHo7ygPXu8cOhAA", "u42nGUhdZLwh1KQALowBVj5n34qFzRW1hY6DQ8jr");
         weatherListResponseCall.enqueue(new Callback<WeatherListResponse>() {
             @Override
             public void onResponse(Call<WeatherListResponse> call, Response<WeatherListResponse> response) {
-                Log.d(TAG, "onResponse: " + response.body().getWeatherListResponse().get(0).getWeatherPeriods().get(0));
-                List<WeatherModel> weatherModelList = response.body().getWeatherListResponse().get(0).getWeatherPeriods().subList(0, 2);
+                Log.d(TAG, "onResponse: " + response.body().getWeatherListResponse().get(0).getWeatherPeriods().get(0).getDateTimeISO());
+                weatherList.addAll(response.body().getWeatherListResponse().get(0).getWeatherPeriods().subList(0, 2));
 
-                recyclerView.setAdapter(new ForecastAdapter(weatherModelList));
+
+                recyclerView.setAdapter(new ForecastAdapter(weatherList));
                 recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
             }
 
