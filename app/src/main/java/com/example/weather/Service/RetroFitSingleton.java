@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetroFitSingleton {
     private static Retrofit instance;
-    private static final String BASE_URL = "http://api.aerisapi.com/";
+    private static final String BASE_URL = "https://api.aerisapi.com/";
 
     public static Retrofit newInstance() {
         if (instance == null) {

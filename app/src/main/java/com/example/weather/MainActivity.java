@@ -36,12 +36,12 @@ public class MainActivity extends AppCompatActivity {
         final RecyclerView recyclerView = findViewById(R.id.forecast_recyclerview);
         final Retrofit retrofit = RetroFitSingleton.newInstance();
         WeatherService service = retrofit.create(WeatherService.class);
-        final Call<WeatherListResponse> weatherListResponseCall = service.getWeatherUpdates("dYNLXJfHo7ygPXu8cOhAA", "u42nGUhdZLwh1KQALowBVj5n34qFzRW1hY6DQ8jr");
+        final Call<WeatherListResponse> weatherListResponseCall = service.getWeatherUpdates();
         weatherListResponseCall.enqueue(new Callback<WeatherListResponse>() {
             @Override
             public void onResponse(Call<WeatherListResponse> call, Response<WeatherListResponse> response) {
-                Log.d(TAG, "onResponse: " + response.body().getWeatherListResponse().get(0).getWeatherPeriods().get(0).getDateTimeISO());
-                weatherList.addAll(response.body().getWeatherListResponse().get(0).getWeatherPeriods().subList(0, 2));
+                Log.d(TAG, "onResponse: " + response.body().isSuccess());
+                weatherList.addAll(response.body().getResponse().get(0).getWeatherPeriods().subList(0, 2));
 
 
                 recyclerView.setAdapter(new ForecastAdapter(weatherList));
